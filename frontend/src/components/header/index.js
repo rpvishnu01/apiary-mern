@@ -3,8 +3,10 @@ import { Link } from "react-router-dom";
 import {
   ArrowDown,
   Friends,
+  FriendsActive,
   Gaming,
   HomeActive,
+  Home,
   Logo,
   Market,
   Menu,
@@ -20,7 +22,7 @@ import AllMenu from "./AllMenu";
 import useClickOutside from "../../helpers/clickOutside";
 import UserMenu from "./userMenu";
 
-export default function Header() {
+export default function Header({ page }) {
   const { user } = useSelector((user) => ({ ...user }));
   const color = "#65676b";
   const [showSearchMenu, setShowSearchMenu] = useState(false);
@@ -43,7 +45,8 @@ export default function Header() {
       <div className="header_left">
         <Link to="/" className="header_logo">
           <div className="circle">
-            <Logo />
+            {/* <Logo /> */}
+            apiary
           </div>
         </Link>
         <div
@@ -61,33 +64,45 @@ export default function Header() {
         </div>
       </div>
       {showSearchMenu && (
-        <SearchMenu color={color} setShowSearchMenu={setShowSearchMenu} />
+        <SearchMenu 
+        color={color}
+        setShowSearchMenu={setShowSearchMenu}
+        token={user.token}
+         />
       )}
 
       <div className="header_middle">
-        <Link to="/" className="middle_icon active">
-          <HomeActive />
+        <Link
+          to="/"
+          className={`middle_icon ${page === "home" ? "active" : ""}`}
+        >
+          {page === "home" ? <HomeActive /> : <Home color={color} />}
         </Link>
-        <Link to="/" className="middle_icon hover1">
-          <Friends color={color} />
+        <Link to="/friends"   className={`middle_icon ${page === "friends" ? "active" : ""}`}>
+        {page === "friends" ? <FriendsActive /> : <Friends color={color} />}
         </Link>
-        <Link to="/" className="middle_icon hover1">
+        {/* <Link to="/" className="middle_icon hover1">
           <Watch color={color} />
           <div className="middle_notification">9+</div>
-        </Link>
-        <Link to="/" className="middle_icon hover1">
+        </Link> */}
+        {/* <Link to="/" className="middle_icon hover1">
           <Market color={color} />
-        </Link>
-        <Link to="/" className="middle_icon hover1">
+        </Link> */}
+        {/* <Link to="/" className="middle_icon hover1">
           <Gaming color={color} />
-        </Link>
+        </Link> */}
       </div>
       <div className="header_right">
-        <Link to="/profile" className="profile_link hover1">
+        <Link
+          to="/profile"
+          className={`profile_link hover1 ${
+            page === "profile" ? "active_link" : ""
+          }`}
+        >
           <img src={user?.picture} alt="" />
           <span>{user?.first_name}</span>
         </Link>
-        <div className="circle_icon hover1" ref={allmenu}>
+        {/* <div className="circle_icon hover1" ref={allmenu}>
           <div
             onClick={() => {
               setShowAllMenu((prev) => !prev);
@@ -97,14 +112,7 @@ export default function Header() {
           </div>
 
           {showAllMenu && <AllMenu />}
-        </div>
-        <div className="circle_icon hover1">
-          <Messenger />
-        </div>
-        <div className="circle_icon hover1">
-          <Notifications />
-          <div className="right_notification">5</div>
-        </div>
+        </div> */}
         <div className="circle_icon hover1" ref={usermenu}>
           <div
             onClick={() => {
@@ -116,6 +124,13 @@ export default function Header() {
 
           {showUserMenu && <UserMenu user={user} />}
         </div>
+        <div className="circle_icon hover1">
+          <Messenger />
+        </div>
+        {/* <div className="circle_icon hover1">
+          <Notifications />
+          <div className="right_notification">5</div>
+        </div> */}
       </div>
     </header>
   );

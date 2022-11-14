@@ -11,7 +11,7 @@ export default function LeftHome({ user }) {
           {user?.first_name} {user.last_name}
         </span>
       </Link>
-      {left.slice(0, 8).map((link, i) => (
+      {left.slice(0, 1).map((link, i) => (
         <LeftLink
           key={i}
           img={link.img}

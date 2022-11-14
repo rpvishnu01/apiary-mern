@@ -4,6 +4,8 @@ export function userReducer( state = Cookies.get("user") ? JSON.parse(Cookies.ge
     switch (action.type) {
       case "LOGIN":
         return action.payload;
+        case "UPDATEPICTURE":
+          return { ...state, picture: action.payload };
   
       default:
         return state;
