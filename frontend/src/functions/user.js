@@ -254,3 +254,40 @@ export const getFriendsPageInfos = async (token) => {
     return error.response.data.message;
   }
 };
+
+
+
+export const userChat = async (userId,token) => {
+  try {
+    const { data } = await axios.get(
+      `${process.env.REACT_APP_BACKEND_URL}/userChat/${userId}`,
+      {
+        headers: {
+          Authorization: `Bearer ${token}`,
+        },
+      }
+    );
+    return data;
+  } catch (error) {
+    return error.response.data.message;
+  }
+};
+
+
+export const getFriends = async (token) => {
+  
+  try {
+    const { data } = await axios.get(
+      `${process.env.REACT_APP_BACKEND_URL}/getFriends`,
+      {
+        headers: {
+          Authorization: `Bearer ${token}`,
+        },
+      }
+    );
+  
+    return data;
+  } catch (error) {
+    return error.response.data.message;
+  }
+};

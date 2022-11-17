@@ -624,3 +624,29 @@ exports.getFriendsPageInfos = async (req, res) => {
     res.status(500).json({ message: error.message });
   }
 };
+
+
+exports.getUser = async (req, res) => {
+  try {
+    const { userId } = req.params;
+
+    const profile = await User.findById(userId).select("-password");
+    if (!profile) {
+      return res.json({ ok: false });
+    }
+
+    res.json(profile);
+  } catch (error) {
+    res.status(500).json({ message: error.message });
+  }
+};
+
+exports.getAllUsers = async (req, res) => {
+  try {
+    const users = await User.find();
+
+    res.status(200).json({ users });
+  } catch (error) {
+    res.status(500).json({ message: error.message });
+  }
+};

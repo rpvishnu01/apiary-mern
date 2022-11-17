@@ -1,5 +1,5 @@
 import "./style.css";
-import { Link } from "react-router-dom";
+import { Link, Navigate } from "react-router-dom";
 import {
   ArrowDown,
   Friends,
@@ -124,9 +124,16 @@ export default function Header({ page }) {
 
           {showUserMenu && <UserMenu user={user} />}
         </div>
+
+        <Link   to="/messenger">
         <div className="circle_icon hover1">
-          <Messenger />
+      
+          <Messenger  />
         </div>
+        </Link>
+
+
+
         {/* <div className="circle_icon hover1">
           <Notifications />
           <div className="right_notification">5</div>

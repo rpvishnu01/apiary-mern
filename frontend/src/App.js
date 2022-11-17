@@ -11,6 +11,7 @@ import Activate from "./pages/home/activate";
 import axios from "axios";
 import { postsReducer } from "./functions/reducers";
 import Friends from "./pages/friends/index";
+import Messenger from "./pages/messenger/Messenger";
 
 function App() {
   const [visible, setVisible] = useState(false);
@@ -60,6 +61,11 @@ function App() {
           <Route
             path="/profile"
             element={<Profile setVisible={setVisible} />}
+            exact
+          />
+           <Route
+            path="/messenger"
+            element={<Messenger setVisible={setVisible} />}
             exact
           />
            <Route

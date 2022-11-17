@@ -33,10 +33,10 @@ exports.getAllPosts = async (req, res) => {
     followingPosts.sort((a, b) => {
       return b.createdAt - a.createdAt;
     });
-  console.log(followingPosts);
+ 
     res.json(followingPosts);
   } catch (error) {
-console.log(error);
+
     return res.status(500).json({ message: error.message });
   }
 };
