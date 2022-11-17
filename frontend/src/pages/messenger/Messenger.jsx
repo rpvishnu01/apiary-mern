@@ -14,7 +14,7 @@ export default function Messenger() {
   const [conversations, setConversations] = useState([]);
   const [currentChat, setCurrentChat] = useState("");
   const [messages, setMessages] = useState(null);
-  const socket = useRef(io("ws://localhost:9000"));
+  const socket = useRef(io(process.env.SOCKET_URL));
   const [newMessage, setNewMessage] = useState("");
   const [arrivalMessage, setArrivalMessage] = useState(null);
   const [onlineUsers, setOnlineUsers] = useState([]);
@@ -25,7 +25,7 @@ export default function Messenger() {
   const { user } = useSelector((state) => ({ ...state }));
 
   useEffect(() => {
-    socket.current = io("ws://localhost:9000");
+    socket.current = io(process.env.SOCKET_URL);
     socket.current.on("getMessage", (data) => {
       setArrivalMessage({
         sender: data.senderId,
