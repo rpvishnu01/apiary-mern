@@ -40,7 +40,7 @@ export default function Profile({ setVisible }) {
         type: "PROFILE_REQUEST",
       });
       const { data } = await axios.get(
-        `http://localhost:8000/getProfile/${userName}`,
+        `${process.env.REACT_APP_BACKEND_URL}/getProfile/${userName}`,
         {
           headers: {
             Authorization: `Bearer ${user.token}`,
