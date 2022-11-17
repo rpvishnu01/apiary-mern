@@ -27,7 +27,7 @@ export default function ChatOnline({
   }, [friends, onlineUsers]);
 
   const handleClick = async (user) => {
-    console.log(user);
+
     try {
       const res = await axios.get(
         `${process.env.REACT_APP_BACKEND_URL}/getConversation/${user._id}`

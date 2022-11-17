@@ -52,7 +52,7 @@ export const addFriend = async (id, token) => {
         },
       }
     );
-    console.log(data);
+
     return "ok";
   } catch (error) {
     console.log(error);
@@ -115,7 +115,7 @@ export const unfollow = async (id, token) => {
   }
 };
 export const acceptRequest = async (id, token) => {
-  console.log(id);
+
   try {
     const { data } = await axios.put(
       `${process.env.REACT_APP_BACKEND_URL}/acceptRequest/${id}`,

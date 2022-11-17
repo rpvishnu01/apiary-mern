@@ -20,7 +20,7 @@ export default function LoginForm({ setVisible }) {
 
   const [login, setLogin] = useState(loginInfos);
   const { email, password } = login;
-  console.log(login);
+
   const handleLoginChange = (e) => {
     const { name, value } = e.target;
     setLogin({ ...login, [name]: value });
@@ -38,6 +38,7 @@ export default function LoginForm({ setVisible }) {
   const loginSubmit = async () => {
     try {
       setLoading(true);
+ 
       const { data } = await axios.post(
         `${process.env.REACT_APP_BACKEND_URL}/login`,
         {
@@ -57,9 +58,11 @@ export default function LoginForm({ setVisible }) {
     <div>
       <div className="login_wrap">
         <div className="login_1">
-          <img src="../../icons/facebook.svg" alt="" />
+          {/* <img src="../../icons/facebook.svg" alt="" /> */}
+        
+          {/* <h1 style={{color: "black", fontWeight:800}}>Apiary</h1> */}
           <span>
-            Facebook helps you connect and share with the people in your life.
+            Apiary helps you connect and share with the people in your life.
           </span>
         </div>
         <div className="login_2">

@@ -1,9 +1,13 @@
+
+require('dotenv').config()
+
 const io = require("socket.io")(9000, {
     cors: {
-      origin:process.env.BASE_URL ,
+      origin:process.env.BASE_URL_SOCKET ,
     },
   });
-  
+
+ 
   let users = [];
   
   const addUser = (userId, socketId) => {

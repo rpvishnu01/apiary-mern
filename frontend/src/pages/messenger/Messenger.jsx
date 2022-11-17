@@ -14,7 +14,7 @@ export default function Messenger() {
   const [conversations, setConversations] = useState([]);
   const [currentChat, setCurrentChat] = useState("");
   const [messages, setMessages] = useState(null);
-  const socket = useRef(io(process.env.SOCKET_URL));
+  const socket = useRef(io(process.env.REACT_APP_SOCKET_URL));
   const [newMessage, setNewMessage] = useState("");
   const [arrivalMessage, setArrivalMessage] = useState(null);
   const [onlineUsers, setOnlineUsers] = useState([]);
@@ -24,8 +24,10 @@ export default function Messenger() {
 
   const { user } = useSelector((state) => ({ ...state }));
 
+console.log();
+
   useEffect(() => {
-    socket.current = io(process.env.SOCKET_URL);
+    socket.current = io(process.env.REACT_APP_SOCKET_URL);
     socket.current.on("getMessage", (data) => {
       setArrivalMessage({
         sender: data.senderId,
@@ -34,13 +36,13 @@ export default function Messenger() {
       });
     });
   }, []);
-  console.log(arrivalMessage);
+
   useEffect(() => {
     arrivalMessage && currentChat?.members?.includes(arrivalMessage.sender)
       ? setMessages((prev) => [...prev, arrivalMessage])
       : setNotification("new message recieved....");
   }, [arrivalMessage, currentChat]);
-  console.log(notification);
+
   useEffect(() => {
     socket.current.emit("addUser", user.id);
     socket.current.on("getUsers", (users) => {

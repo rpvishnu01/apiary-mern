@@ -19,7 +19,7 @@ export default function DisplayAccessibility({ setVisible }) {
           <div className="mmenu_col">
             <span className="mmenu_span1">Dark Mode</span>
             <span className="mmenu_span2">
-              Adjust the appearance of Facebook to reduce glare and give your eyes
+              Adjust the appearance of Apiary to reduce glare and give your eyes
               a break.
             </span>
           </div>

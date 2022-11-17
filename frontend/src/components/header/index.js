@@ -58,7 +58,7 @@ export default function Header({ page }) {
           <Search color={color} />
           <input
             type="text"
-            placeholder="Search Facebook"
+            placeholder="Search Apiary"
             className="hide_input"
           />
         </div>
